@@ -1,9 +1,19 @@
 pipeline {
     agent any
+    options {
+        // Configura el timeout para evitar que el pipeline se quede colgado
+        timeout(time: 30, unit: 'MINUTES')
 
-    environment {
-        // Define la URL del ambiente como variable de entorno
-        TEST_ENV_URL = 'fakeapi.net' // Puedes cambiar esto desde Jenkins
+        // Configura el número de builds a mantener
+        buildDiscarder(logRotator(numToKeepStr: '5'))   
+        // Configura el nombre del pipeline
+        displayName('JMeter Test Pipeline') 
+        // Configura el color del pipeline
+        colorizeOutput 'blue'
+    } 
+    
+     parameters {
+        string(name: 'TEST_ENV_URL', defaultValue: 'fakeapi.net', description: 'URL del ambiente para el test plan de JMeter')
     }
 
     stages {
