@@ -7,7 +7,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="fakeapi" elementType="Argument">
             <stringProp name="Argument.name">fakeapi</stringProp>
-            <stringProp name="Argument.value">fakeapi.net</stringProp>
+            <stringProp name="Argument.value">${__property(URL)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
