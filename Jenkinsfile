@@ -1,8 +1,11 @@
 pipeline {
     agent any
     
-     parameters {
-        string(name: 'TEST_ENV_URL', defaultValue: 'fakeapi.net', description: 'URL del ambiente para el test plan de JMeter')
+    parameters {
+            choice(name: 'ENVIRONMENT', choices: ['dev', 'uat'], description: 'Selecciona el ambiente para la ejecución del test plan')
+        }
+    environment {
+        TEST_ENV_URL = getEnvironmentUrl(params.ENVIRONMENT) // Asigna la URL según el ambiente seleccionado
     }
 
     stages {
@@ -30,5 +33,17 @@ pipeline {
                 perfReport sourceDataFiles: 'results.jtl'
             }
         }
+    }
+}
+
+// Función para asignar la URL según el ambiente seleccionado
+def getEnvironmentUrl(environment) {
+    switch (environment) {
+        case 'dev':
+            return 'fakeapi.net'
+        case 'uat':
+            return 'uat.example.com'
+        default:
+            error "Ambiente no válido: ${environment}"
     }
 }
