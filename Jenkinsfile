@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define la URL del ambiente como variable de entorno
-        TEST_ENV_URL = 'https://fakeapi.net' // Puedes cambiar esto desde Jenkins
+        TEST_ENV_URL = 'fakeapi.net' // Puedes cambiar esto desde Jenkins
     }
 
     stages {
