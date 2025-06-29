@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Ejecuta el test plan de JMeter
                 script {
-                    sh """
+                    bat """
                     jmeter -n -t testfakeapi.jmx -JURL=${TEST_ENV_URL} -l results.jtl
                     """
                 }
