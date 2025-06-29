@@ -28,7 +28,7 @@ pipeline {
         stage('Publish Results') {
             steps {
                 // Publica los resultados usando el Performance Plugin
-                perfReport parsers: [[$class: 'JUnitParser', glob: 'results.jtl']]
+                perfReport sourceDataFiles: 'results.jtl'
             }
         }
     }
