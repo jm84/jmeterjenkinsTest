@@ -25,3 +25,24 @@ Si utilizas Build with Parameters en Jenkins para pasar la URL, el valor proporc
 Ejecución según el sistema operativo
 Linux: Usa el comando sh para ejecutar scripts en la terminal.
 Windows: Usa el comando bat para ejecutar scripts en la línea de comandos.
+
+
+## **Configuración del Pipeline en jenkins**
+- Agregar plugins en jenkins: Performance plugin, github.
+- Crear un new item tipo pipeline.
+- Selecciona This project is parameterized
+```
+- nombre ENVIRONMENT
+- choice: dev
+uat
+- Descripcion: Selecciona el ambiente para la ejecución del test plan
+```
+- Definicion del pipeline Script from SCM
+```
+- Git
+- url del repo en git
+- Credenciales si es privado o sin credenciales si es publico
+- seleccionar rama principal : */main
+- Apply y luego Save
+```
+
